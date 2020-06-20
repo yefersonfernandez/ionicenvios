@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-toolbar color="dark">
+      <ion-icon class="iconSize" slot="start" (click)="closeModal()" name="arrow-back-outline"></ion-icon>
+    <ion-title align="center" >Relacion cliente </ion-title>
+</ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-card>
+      <ion-card-content>
+        <p>Nombre: {{cliente.nombre}}</p>
+        <p>Telefono: {{cliente.telefono}}</p>
+        <p>Correo Electronico{{cliente.email}}</p>
+          <br>
+          <table borde="1">
+              <thead>
+                  <tr>
+                      <th>Descripcion</th>
+                  </tr>
+              </thead>
+              <tbody>
+                  <tr *ngFor="let direccion of direcciones">
+                      <td>{{direccion.descripcion}}</td>
+                  </tr>
+              </tbody>
+
+          </table>
+      </ion-card-content>
+  </ion-card>
+
+</ion-content>

@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-toolbar color="dark">
+      <ion-icon class="iconSize" slot="start" (click)="closeModal()" name="arrow-back-outline"></ion-icon>
+    <ion-title align="center" >Relacion direccion envio </ion-title>
+</ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+      <ion-card-content>
+          <p>Fecha pedido: {{pedidos.fechaPedido}}</p>
+          <br>
+          <table borde="1">
+              <thead>
+                  <tr>
+                      <th>Fecha pedido</th>
+                  </tr>descripcion
+              </thead>
+              <tbody>
+                  <tr *ngFor="let articulo of articulos">
+                      <td>{{articulo.descripcion}}</td>
+                      <td>{{articulo.valorUnitario}}</td>
+                      <td><ion-avatar>
+                        <img src="{{'http://apiyefer.yca.com.co/img/'+articulo.imagen}}" alt=""> 
+                   </ion-avatar></td>
+                  </tr>
+            </tbody>
+
+          </table>
+      </ion-card-content>
+  </ion-card>
+
+</ion-content>

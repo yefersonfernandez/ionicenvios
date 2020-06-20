@@ -1,0 +1,45 @@
+
+<ion-header [translucent]="true">
+  <ion-toolbar color="dark">
+      <ion-title align="center">
+          Ciudad
+      </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+</ion-refresher>
+  <ion-searchbar animated (ionChange)="buscar( $event)"></ion-searchbar>
+  <ion-list>
+      <ion-item-sliding *ngFor="let ciudad of ciudades | filtro:textoBuscar">
+              <ion-item-options side="start">
+                  <ion-item-option color="danger" (click)="eliminar(ciudad.id)">
+                      <ion-icon name="trash-outline"></ion-icon>
+                  </ion-item-option>
+                  <ion-item-option color="primary" (click)="update(ciudad.id)">
+                    <ion-icon name="create-outline"></ion-icon>
+                  </ion-item-option>
+              </ion-item-options>
+              <ion-item>
+                  <ion-label>
+                      <ion-label>{{ciudad.nombre}}</ion-label>
+                  </ion-label>
+              </ion-item>
+              <ion-item-options side="end">
+                <ion-item-option color="primary" (click)="show(ciudad.id)">
+                  <ion-icon name="pin-outline"></ion-icon>
+                </ion-item-option>
+            </ion-item-options>
+          </ion-item-sliding>
+  
+      </ion-list>
+
+  <ion-fab   vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button color="dark" (click)="create()">
+      <ion-icon  name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>
+

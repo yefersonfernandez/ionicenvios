@@ -1,0 +1,32 @@
+
+<ion-header>
+  <ion-toolbar color="dark">
+      <ion-icon class="iconSize" slot="start" (click)="closeModal()" name="arrow-back-outline"></ion-icon>
+    <ion-title align="center" >Actualizar Locacion </ion-title>
+</ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form #formulario="ngForm" (ngSubmit)="send()">
+      <ion-list>
+        <ion-item>
+          <ion-label position="floating">Longitud</ion-label>
+          <ion-textarea [(ngModel)]="data.longitud" name="longitud" type="tel" required></ion-textarea>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Latitud</ion-label>
+        <ion-textarea [(ngModel)]="data.latitud" name="latitud" type="tel" required></ion-textarea>
+    </ion-item>
+          <ion-item>
+            <ion-label position="floating">Direccion Envio</ion-label>
+            <ion-select [(ngModel)]="data.Direccionenvio_id" name="direccion" required>
+                <ion-select-option *ngFor="let dir of direcciones" [value]="dir.id">{{dir.descripcion}}</ion-select-option>
+            </ion-select>
+        </ion-item>
+      </ion-list>
+      <ion-button color="dark" expand="full" type="submit" [disabled]="formulario.invalid">
+        Actualizar
+      </ion-button>
+
+  </form>
+</ion-content>

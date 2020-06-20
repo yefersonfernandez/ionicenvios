@@ -1,0 +1,27 @@
+<ion-header>
+  <ion-toolbar color="dark">
+      <ion-icon class="iconSize" slot="start" (click)="closeModal()" name="arrow-back-outline"></ion-icon>
+    <ion-title align="center" >Nuevo Articulo </ion-title>
+   
+</ion-toolbar>
+</ion-header>
+<ion-content>
+<form #formulario="ngForm" (ngSubmit)="send()">
+    <ion-list>
+        <ion-item>
+            <ion-label position="floating">descripcion</ion-label>
+            <ion-input [(ngModel)]="data.descripcion" name="descripcion" type="text" required></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="floating">Valor unitario</ion-label>
+          <ion-input [(ngModel)]="data.valorUnitario" name="valorUnitario" type="text" required></ion-input>
+      </ion-item>
+
+    </ion-list>
+    <ion-button color="dark" expand="full" type="submit" [disabled]="formulario.invalid">
+        Crear
+    </ion-button>
+</form>
+</ion-content>
+

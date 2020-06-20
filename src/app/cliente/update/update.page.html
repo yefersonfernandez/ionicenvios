@@ -1,0 +1,34 @@
+<ion-header>
+  <ion-toolbar color="dark">
+      <ion-icon class="iconSize" slot="start" (click)="closeModal()" name="arrow-back-outline"></ion-icon>
+    <ion-title align="center" >Actualizar cliente </ion-title>
+   
+</ion-toolbar>
+</ion-header>
+
+<ion-content>
+<ion-card>
+    <form #formulario="ngForm" (ngSubmit)="send()">
+        <ion-list>
+          <ion-item>
+            <ion-label position="floating">Nombre</ion-label>
+            <ion-input [(ngModel)]="data.nombre" name="nombre" type="text" required></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label position="floating">Email</ion-label>
+            <ion-input [(ngModel)]="data.email" name="email" type="email" pattern="^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$" required></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label position="floating">Telefono</ion-label>
+            <ion-input [(ngModel)]="data.telefono" name="telefono" type="tel" required></ion-input>
+        </ion-item>
+            
+        </ion-list>
+        <ion-button color="dark" expand="full" type="submit" [disabled]="formulario.invalid">
+        Actualizar
+      </ion-button>
+    </form>
+
+</ion-card>
+
+</ion-content>

@@ -1,3 +1,35 @@
 <ion-app>
-  <ion-router-outlet></ion-router-outlet>
+  
+  <ion-buttons slot="start">
+    <ion-menu-button color="primary" menu="first"></ion-menu-button>
+    </ion-buttons>
+    <ion-menu side="start" menuId="first" contentId="main">
+        <ion-header>
+          <ion-toolbar color="dark">
+            <ion-title>Proyecto pedidos</ion-title>
+          
+          </ion-toolbar>
+        </ion-header>
+        <ion-content>
+          <ion-list>
+            
+            <ion-item routerLink="/listciud"><ion-icon slot="start" name="home-outline">
+            </ion-icon>Ciudad<ion-icon slot="end" name="chevron-forward-outline"></ion-icon></ion-item>
+            <ion-item routerLink="/listcli"><ion-icon slot="start" name="person-outline">
+            </ion-icon>Cliente<ion-icon slot="end" name="chevron-forward-outline"></ion-icon></ion-item>
+            <ion-item routerLink="/listarti"><ion-icon slot="start" name="cart-outline">
+            </ion-icon>Articulo<ion-icon slot="end" name="chevron-forward-outline"></ion-icon></ion-item>
+            <ion-item routerLink="/listdir"><ion-icon slot="start" name="pin-outline">
+            </ion-icon>Direccion Envio<ion-icon slot="end" name="chevron-forward-outline"></ion-icon></ion-item>
+            <ion-item routerLink="/listpedi"><ion-icon slot="start" name="file-tray-outline">
+            </ion-icon>Pedido<ion-icon slot="end" name="chevron-forward-outline"></ion-icon></ion-item>
+            <ion-item routerLink="/listloca"><ion-icon slot="start" name="location-outline">
+            </ion-icon>Locacion<ion-icon slot="end" name="chevron-forward-outline"></ion-icon></ion-item>
+          </ion-list>
+        </ion-content>
+      </ion-menu>
+  
+      <ion-router-outlet id="main"></ion-router-outlet>
+  
+  
 </ion-app>
