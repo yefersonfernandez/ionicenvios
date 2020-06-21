@@ -6,7 +6,7 @@
 </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content [fullscreen]="true">
   <form #formulario="ngForm" (ngSubmit)="send()">
       <ion-list>
         <ion-item>
@@ -15,9 +15,9 @@
       </ion-item>
       <ion-item>
         <ion-label position="floating">Latitud</ion-label>
-        <ion-textarea [(ngModel)]="data.latitud" name="latitud" type="tel" required></ion-textarea>
+        <ion-textarea [(ngModel)]="data.latitud" name="latitud" value="{{longitude}}" type="tel" required></ion-textarea>
     </ion-item>
-    
+
           <ion-item>
             <ion-label position="floating">Direccion Envio</ion-label>
             <ion-select [(ngModel)]="data.Direccionenvio_id" name="direccion" required>
@@ -31,3 +31,9 @@
 
   </form>
 </ion-content>
+
+
+<ion-content [fullscreen]="true">
+  <div id="map" style="width:100%;height:60%;"></div>
+  </ion-content>
+  

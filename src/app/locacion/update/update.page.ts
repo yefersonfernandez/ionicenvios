@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from 'src/app/services/api.service';
 import { AlertController, NavParams, ModalController } from '@ionic/angular';
+import { Geolocation } from '@ionic-native/geolocation/ngx';
+import { Platform } from '@ionic/angular';
+declare var google;
 
 @Component({
   selector: 'app-update',
@@ -8,21 +11,65 @@ import { AlertController, NavParams, ModalController } from '@ionic/angular';
   styleUrls: ['./update.page.scss'],
 })
 export class UpdatePage implements OnInit {
+
   public data = {
     longitud: "",
     latitud: "",
     Direccionenvio_id: null,
   }
+  map:any;
+  marker:any;
+  latitude:any="";
+  longitude:any="";
   public locaciones: any;
   public direcciones: any[] = [];
 
 
   constructor(
+    public platform:Platform,
+    public geolocation:Geolocation,
     private api: ApiService,
     private alert: AlertController,
     private navParam: NavParams,
     private modal: ModalController
-  ) { }
+  ) {
+    this.platform.ready().then(()=>{
+      var mapOptions={
+        center:{lat:this.data.latitud, lng:this.data.longitud},
+        zoom:7
+      }
+      
+      this.map = new google.maps.Map(document.getElementById
+      ("map"),mapOptions);
+      this.Getlocation();
+      })
+
+   }
+   
+Getlocation()
+{
+
+  var ref=this;
+  let watch =this.geolocation.watchPosition();
+  watch.subscribe((position)=>{
+    var gps=new google.maps.LatLng(
+      position.coords.latitude,position.coords.longitude);
+    if(ref.marker == null){
+      ref.marker=new google.maps.Marker({
+position:gps,
+map:ref.map,
+title:'my position'
+      })
+    }else{
+
+      ref.marker.setPosition(gps);
+    }
+    ref.map.panTo(gps);
+ref.latitude =this.data.latitud;
+ref.longitude =this.data.longitud;
+  })
+
+ }
 
   ngOnInit() {
     let id = this.navParam.get('id');
